@@ -84,6 +84,8 @@ static enum hrtimer_restart power_control_irq(struct hrtimer *timer)
 static int powctl_probe(struct platform_device *pdev) {
 	struct device *dev = &pdev->dev;
 	int ret = -1;
+
+	pr_info(POWCTL_PRFX "Initializing power modulator devices");
 	
 	/* initialize gpio */
 	powctl_device.zc = gpiod_get(dev, "zc", GPIOD_IN);

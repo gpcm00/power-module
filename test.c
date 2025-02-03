@@ -29,9 +29,9 @@ int decodemode(char* mode)
 }
 
 void readmem(volatile void* addr, int n) {
-	for(int i = 0; i < n; i+=4) {
-		volatile void* readaddr = addr;
-		readaddr++;
+	volatile void* readaddr;
+	for(int i = 0; i < n; i+=sizeof(int)) {
+		readaddr = addr + i;
 		printf("0x%lX: ", (long)readaddr);
 		int val = *(int*)readaddr;
 		printf("0x%X (%d)\n",  val, val);

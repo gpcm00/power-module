@@ -18,7 +18,7 @@
 		};
 	};
 	
-	
+/*
 	fragment@1 {
 		target = <&gpio>;
 		__overlay__ {
@@ -36,4 +36,5 @@
 		pw_pin = <&power_controller>, "pw-gpio:1",
 		         <&power_controller_pins>, "brcm,pins:1";
 	};
+*/
 };
