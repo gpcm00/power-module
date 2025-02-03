@@ -1,13 +1,14 @@
-obj-m += dt_gpio.o
+MODULE_NAME=adcmodul
+obj-m += $(MODULE_NAME).o
 
-all: module dt
+all: modules dt
 	echo Builded Device Tree Overlay and kernel module
 
-module:
+modules:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
-dt: testoverlay.dts
-	dtc -@ -I dts -O dtb -o testoverlay.dtbo testoverlay.dts
+dt: $(MODULE_NAME).dts
+	dtc -@ -I dts -O dtb -o $(MODULE_NAME).dtbo $(MODULE_NAME).dts
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
-	rm -rf testoverlay.dtbo
+	rm -rf $(MODULE_NAME).dtbo
 	

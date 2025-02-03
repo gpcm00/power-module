@@ -1,0 +1,27 @@
+/dts-v1/;
+/plugin/;
+/ {
+	compatible = "brcm,bcm2835";
+	fragment@0 {
+		target = <&spidev0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+		
+	fragment@1 {
+		target = <&spi0>;
+		__overlay__ {
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			mcp3001: mcp3001@0 {
+				compatible = "microchip,mcp3001";
+				reg = <0>;              /* Chip select 0 */
+				spi-max-frequency = <1000000>;  /* 1 MHz SPI clock, adjust if necessary */
+				/* Additional properties (e.g., voltage-supply, reset-gpios) can be added here */
+		    };
+		};
+	};
+};
