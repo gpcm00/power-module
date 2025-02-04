@@ -189,7 +189,7 @@ static int __init powctl_init_module(void)
 	
 	pr_info(POWCTL_PRFX "Initializing power modulator module");
 	
-	result = alloc_chrdev_region(&dev, powctl_minor, 1, "powctrl");
+	result = alloc_chrdev_region(&dev, powctl_minor, 1, "powctl");
 	powctl_major = MAJOR(dev);
 	if(result < 0) {
 		pr_err(POWCTL_PRFX "Error code %d can't get major %d", result, powctl_major);
